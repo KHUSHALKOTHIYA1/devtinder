@@ -29,3 +29,15 @@
 -write dummy auth middlea=ware for admin
 -write a dummy auth middleware for all user Routes,except /user /login
 -error handling using app.use("/",(err,req,res,next)={});
+
+6
+-create cluster
+-install mongoose
+-connect application to thi database
+-connect first database and than starting application
+-create a user schema
+
+7
+-what is the deifference betwwen json or javascript
+-add json middleware
+-make your signup api dynamic to receive data from the  and user

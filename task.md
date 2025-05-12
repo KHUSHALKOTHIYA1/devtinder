@@ -12,3 +12,6 @@
 -.gitignore
 -create  a remote repo on github
 -push all code to remote origin
+-play with route and route extensions ex./hello, / ,hello/2 ,/xyz
+-order of the routes matters a lot 
+-write logic to handle GET, POST, DELETE, PATCH API calls and test them on postman 

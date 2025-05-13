@@ -41,3 +41,7 @@
 -what is the deifference betwwen json or javascript
 -add json middleware
 -make your signup api dynamic to receive data from the  and user
+-API = get user from the email
+-API - FEED API - GET /feed - get all the users from the database
+-API - find by id 
+-API - delete user

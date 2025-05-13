@@ -56,9 +56,20 @@ app.delete("/user", async (req, res) => {
 
   try {
     const user = await User.findByIdAndDelete(userId);
-    res.send("user deleted successfully")
+    res.send("user deleted successfully");
   } catch (error) {
     res.status(500).send("Something went wrong");
+  }
+});
+
+app.patch("/user", async (req, res) => {
+  const userId = req.body._id;
+  const data = req.body;
+  try {
+    await User.findByIdAndUpdate(userId, data);
+    res.send("user updated successfully");
+  } catch (error) {
+    res.status(400).send("UPDATE FAILED" + err.message);
   }
 });
 

@@ -55,3 +55,10 @@
 -add timestamps
 -api level validation patch request
 -api validation all fields
+-external email validator
+-install validator
+
+9
+-validate data in signup api
+-install bcrypt pakage
+-create password using bcrypt.hash $ save the user is excupted passwords

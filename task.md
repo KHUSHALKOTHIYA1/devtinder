@@ -45,3 +45,13 @@
 -API - FEED API - GET /feed - get all the users from the database
 -API - find by id 
 -API - delete user
+
+8
+-schema options
+-add required,unique,lowercase,min,minlength,trim
+-add default
+-create a cudtom validatetion function for gender
+-improve db schema - appropiate validations each field in schema
+-add timestamps
+-api level validation patch request
+-api validation all fields

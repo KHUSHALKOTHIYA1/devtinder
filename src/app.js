@@ -1,7 +1,7 @@
 const express = require("express");
 const connectDB = require("./config/database");
 const app = express();
-const User = require("../models/user");
+const User = require("../src/models/user");
 const { validateSignUpData } = require("./utils/validation");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -20,7 +20,7 @@ app.post("/signup", async (req, res) => {
 
     //hash the password
     const passwordHash = await bcrypt.hash(password, 10);
-    console.log(passwordHash);
+    // console.log(passwordHash);
 
     const user = new User({
       firstname,

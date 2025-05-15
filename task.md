@@ -62,3 +62,10 @@
 -validate data in signup api
 -install bcrypt pakage
 -create password using bcrypt.hash $ save the user is excupted passwords
+-create login api
+-compare password and throw error email or password invalid
+-install cookie parser
+-just send a dummy cookie to user
+-create get/profile api check if you the cookie back
+-in login apin create a jwt token 
+-read the cookie inside your profile api and find the logged user

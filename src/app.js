@@ -11,6 +11,7 @@ const { userAuth } = require("./middlewares/auth");
 app.use(express.json());
 app.use(cookieParser());
 
+//signup api
 app.post("/signup", async (req, res) => {
   try {
     //sign up validation
@@ -35,6 +36,7 @@ app.post("/signup", async (req, res) => {
   }
 });
 
+// login api
 app.post("/login", async (req, res) => {
   try {
     const { emailId, password } = req.body;
@@ -48,7 +50,9 @@ app.post("/login", async (req, res) => {
     if (isPasswordisValid) {
       //create jwt token
 
-      const token = jwt.sign({ _id: user._id }, "DEV@Tinder$790");
+      const token = jwt.sign({ _id: user._id }, "DEV@Tinder$790", {
+        expiresIn: "7d",
+      });
       // console.log(token);
 
       //add token to cookie and send  the response back to user
@@ -62,7 +66,8 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.get("/profile", async (req, res) => {
+//profile api
+app.get("/profile", userAuth, async (req, res) => {
   try {
     const user = req.user;
     res.send(user);
@@ -71,6 +76,7 @@ app.get("/profile", async (req, res) => {
   }
 });
 
+//get user api
 app.get("/user", async (req, res) => {
   const userEmail = req.body.emailId;
 
@@ -86,56 +92,13 @@ app.get("/user", async (req, res) => {
   }
 });
 
-app.get("/feed", async (req, res) => {
+app.get("/sendConnectionRequest", userAuth, async (req, res) => {
   try {
-    const users = await User.find({});
-    res.send(users);
-  } catch {
-    res.status(500).send("somthing went wrong");
-  }
-});
+    const user = req.user;
 
-app.get("/findById/:id", async (req, res) => {
-  try {
-    const userId = req.params.id;
-    if (!userId) {
-      return res.status(400).send("User ID is required");
-    }
-    res.send(userId);
-  } catch (error) {
-    res.status(500).send("Something went wrong");
-  }
-});
-
-app.delete("/user", async (req, res) => {
-  const userId = req.body.userId;
-
-  try {
-    const user = await User.findByIdAndDelete(userId);
-    res.send("user deleted successfully");
-  } catch (error) {
-    res.status(500).send("Something went wrong");
-  }
-});
-
-app.patch("/user/:_id", async (req, res) => {
-  const userId = req.params?._id;
-  const data = req.body;
-  try {
-    const ALLOWED_UPDATES = ["photoUrl", "about", "gender", "age", "skills"];
-    const isUpdateAllowed = Object.keys(data).every((k) =>
-      ALLOWED_UPDATES.includes(k)
-    );
-    if (!isUpdateAllowed) {
-      res.status(401).send("update not allowed");
-    }
-    if (data?.skills.length > 10) {
-      return res.status(400).send("only 10 fields are allowed at this time");
-    }
-    await User.findByIdAndUpdate(userId, data);
-    res.send("user updated successfully");
-  } catch (error) {
-    res.status(400).send("UPDATE FAILED" + err.message);
+    res.send(user);
+  } catch (err) {
+    res.status(400).send("ERROR:" + err.message);
   }
 });
 

@@ -69,3 +69,6 @@
 -create get/profile api check if you the cookie back
 -in login apin create a jwt token 
 -read the cookie inside your profile api and find the logged user
+-user auth middleware
+-add the userauth middleware in profile api send a new sendconnection quest api
+-test the expiry of jwt token and cookie for 7days

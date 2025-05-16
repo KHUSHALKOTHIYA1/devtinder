@@ -41,18 +41,16 @@ app.post("/login", async (req, res) => {
   try {
     const { emailId, password } = req.body;
 
-    const user = await User.findOne({ emailId: emailId });
+    const user = await User.findOne({ emailId: emailId }); 
     if (!user) {
       throw new Error("email id not found");
     }
 
-    const isPasswordisValid = await bcrypt.compare(password, user.password);
+    const isPasswordisValid = await user.validatePassword(password);
     if (isPasswordisValid) {
       //create jwt token
 
-      const token = jwt.sign({ _id: user._id }, "DEV@Tinder$790", {
-        expiresIn: "7d",
-      });
+      const token = await user.getJWT();
       // console.log(token);
 
       //add token to cookie and send  the response back to user
@@ -76,22 +74,7 @@ app.get("/profile", userAuth, async (req, res) => {
   }
 });
 
-//get user api
-app.get("/user", async (req, res) => {
-  const userEmail = req.body.emailId;
-
-  try {
-    const user = await User.find({ emailId: userEmail });
-    if (user) {
-      res.send(user);
-    } else {
-      res.status(400).send("email not find");
-    }
-  } catch {
-    res.status(500).send("something went wrong");
-  }
-});
-
+//send connection api
 app.get("/sendConnectionRequest", userAuth, async (req, res) => {
   try {
     const user = req.user;

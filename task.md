@@ -72,3 +72,5 @@
 -user auth middleware
 -add the userauth middleware in profile api send a new sendconnection quest api
 -test the expiry of jwt token and cookie for 7days
+-create userschema method to getJWT()
+-create userschema methos to comparepassword(passwordinputbyuser)

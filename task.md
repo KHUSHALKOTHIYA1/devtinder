@@ -82,3 +82,5 @@
 -create route folder manages the auth ,request and more routers
 -creare authrouter,profilerouter,requestrouter
 -import all stuff   
+-logout api
+-delete api first all 6 api ready

@@ -65,6 +65,8 @@
 -create login api
 -compare password and throw error email or password invalid
 -install cookie parser
+
+10
 -just send a dummy cookie to user
 -create get/profile api check if you the cookie back
 -in login apin create a jwt token 
@@ -74,3 +76,9 @@
 -test the expiry of jwt token and cookie for 7days
 -create userschema method to getJWT()
 -create userschema methos to comparepassword(passwordinputbyuser)
+
+11
+-documantation express.router
+-create route folder manages the auth ,request and more routers
+-creare authrouter,profilerouter,requestrouter
+-import all stuff   

@@ -56,7 +56,7 @@ profileRouter.patch("/profile/reset/password", userAuth, async (req, res) => {
 
     const user = req.user;
 
-    const isMatch = await bcrypt.compare(currentPassword, user.password);
+    const isMatch = await bcrypt.compare(currentPassword, user.newPassword);
     if (!isMatch) {
       return res.status(401).json({ error: "Current password is incorrect" });
     }

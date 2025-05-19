@@ -84,3 +84,10 @@
 -import all stuff   
 -logout api
 -delete api first all 6 api ready
+
+12
+-validation of all sides
+-$or and $and query
+-create connectionrequest schema
+-advantages and disadvanges of indexes
+-why need index

@@ -91,3 +91,10 @@
 -create connectionrequest schema
 -advantages and disadvanges of indexes
 -why need index
+
+14
+-write a code of validation post/request/review/:status/:requireId
+-thought process - POST VS GET
+-ref and populate
+-create get api /request/received
+-create connection api 

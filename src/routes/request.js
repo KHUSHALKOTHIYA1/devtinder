@@ -90,7 +90,7 @@ requestRouter.post(
       res.json({ message: "Connection request " + status, data });
     } catch (error) {
       console.error("Error in reviewing request:", error);
-      return res
+      return res 
         .status(400)
         .json({ error: error.message || "Something went wrong" });
     }
